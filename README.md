@@ -1,3 +1,4 @@
 # Chatserver
-This is a simple web-based chatserver \n
+This is a simple web-based chatserver
+
 it's a school task
