@@ -1,2 +1,3 @@
 # Chatserver
-School-project
+This is a simple web-based chatserver
+it's a school task
