@@ -1,0 +1,40 @@
+{
+    "contacts":{
+        "1":[
+            {"u":2},
+            {"n":"new group"}
+        ],
+        "2":[
+            {"u":1},
+            {"u":3},
+            {"n":"new group"}
+        ],
+        "3":[
+            {"u":2},
+            {"n":"new group"}
+        ]
+    },
+
+    "data":{
+        "1_2":[
+            [1,"hi there"],
+            [2,"hello"],
+            [1,"what's going on?"],
+            [2,"oh, nothing"]
+        ],
+        "2_3":[
+            [3,"hi, whats going on?"],
+            [2,"you disturb me"],
+            [3,"wait, why?"]
+        ],
+        "new group": {
+            "u":[1,2,3],
+            "t":[
+                [0,"Luke created the group: \"new group\""],
+                [1,"oh, this is our new group?"],
+                [2,"really, new group?"],
+                [3,"well, I'm not the most creative"]
+            ]
+        }
+    }
+}
