@@ -29,6 +29,7 @@
         ],
         "new group": {
             "u":[1,2,3],
+            "d":"hey, it's a group",
             "t":[
                 [0,"Luke created the group: \"new group\""],
                 [1,"oh, this is our new group?"],

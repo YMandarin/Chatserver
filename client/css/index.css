@@ -1,0 +1,268 @@
+html{
+    height:100%;
+}
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height:100%;
+    margin:0;
+    vertical-align: center;
+}
+
+p{
+    text-overflow: ellipsis;
+    overflow:hidden;
+    white-space: nowrap;
+}
+
+ul{
+    list-style: none;
+}
+
+svg{
+    cursor:pointer;
+    transition:all 0.05s;
+}
+svg:hover{
+    transform:translateY(-1px);
+    transition:all 0.05s;
+}
+
+#main{
+    margin: auto;
+    height:100%;
+    max-width: 1200px;
+    box-sizing: border-box;
+    
+}
+#mainGrid{
+    display:grid;
+    grid-template-columns: minmax(200px,270px) minmax(300px,1fr);
+    grid-template-rows: 50px 1fr auto;
+    height:100%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.mainField-character{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgb(0,130,150);
+    
+    padding:0 5px;
+}
+
+.mainField-character p{
+    margin: auto 10px;
+    font-size:17px;
+    color: white;
+}
+
+.mainField-character p:hover{
+    cursor:pointer;
+}
+
+.characterRight{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.characterRight svg:hover{
+    cursor:pointer;
+}
+
+.characterRight svg{
+    fill: white;
+    margin: 0 5px;
+}
+
+#characterListOnline{
+    transform: scale(0.8);
+    stroke: white;
+    margin:0 0 3px 3px;
+}
+
+#characterListOnline:hover{
+    transform: translateY(-1px) scale(0.8);
+}
+
+.mainField-title{
+    background-color: rgb(0,130,150);
+    border-left: 1px solid rgb(200,200,200);
+    color:white;
+    cursor:pointer;
+}
+
+
+#groupName{
+    margin:7px 15px 2px 15px ;
+}
+
+#groupDescription{
+    margin:0 15px;
+    font-size: 12px;
+}
+
+.mainField-selection{
+    grid-row: 2 / 4;
+    grid-column:1;
+    background-color:white;
+    border-right:1px solid rgb(230,230,230);
+    box-sizing: border-box;
+    height:100%;
+    display:flex;
+    flex-direction: column;
+}
+
+#chatSelection{
+    padding:0;
+    margin:0;
+    overflow-y: auto;
+    overflow-x:hidden;
+    flex-grow:1;
+    background-color:white;
+}
+
+#chatSelection p{
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+.chat{
+    border-bottom:rgb(230,230,230) 1px solid;
+    padding:5px 15px;
+    transition: all 0.1s;
+    
+}
+
+.chat:hover{
+    background-color: rgba(100,100,100,0.05);
+    transition: all 0.1s;
+}
+
+.chat:active{
+    background-color: rgba(100,100,100,0.10);
+}
+
+.activeChat{
+    border-bottom:rgb(230,230,230) 1px solid;
+    padding:5px 15px;
+    background-color: rgba(100,100,100,0.15);
+}
+
+.chatTitle{
+    margin:5px 0;
+    color:rgb(50,50,50);
+}
+
+.chatLastText{
+    margin:0;
+    font-size: 13px;
+    color:rgb(100,100,100);
+}
+
+.searchField{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    position:relative;
+    border-bottom:1px rgb(200,200,200) solid;
+    background-color: rgb(250,250,250);
+}
+
+#searchInput{
+    padding:5px 10px;
+    margin:5px;
+    flex-grow: 1;
+    border:none;
+    border-radius: 7px;
+    color:rgb(80,80,80);
+}
+
+.mainField-chat{
+    background-color:rgb(250,250,250);
+}
+
+#chatList{
+    display:flex;
+    flex-direction: column;
+    padding: 10px 40px 
+}
+
+.othersMessage{
+    align-self: flex-start;
+    background-color: white;
+    font-size:12px;
+    font-weight: bolder;
+    color:rgb(100,100,100);
+}
+
+.writerMessage{
+    align-self: flex-end;
+    background-color: rgb(150,220,255);
+}
+
+.message{
+    padding: 10px 20px;
+    margin: 5px 0;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 5px 10px rgba(0,0,0,0.15);
+    border-radius: 5px;
+    max-width: 80%;
+    
+}
+
+.message p{
+    margin:5px 0;
+    color:rgb(50,50,50);
+    overflow: hidden;
+    white-space: pre-line;
+}
+
+.othersMessage p{
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.mainField-input{
+    grid-row: 3;
+    grid-column: 2;
+    background-color: whitesmoke;
+    border-top:1px solid rgb(230,230,230);
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    padding:10px;
+}
+
+#mainInput{
+    flex-grow: 1;
+    padding: 10px 45px 10px 15px;
+    font-size: 17px;
+    border: none;
+    color:rgb(80,80,80);
+    border-radius: 10px;
+    background-color: white;
+    max-width: 100%;
+    box-sizing: border-box;
+    word-wrap: break-word;
+}
+
+#mainInput[placeholder]:empty:before {
+    content: attr(placeholder);
+    color: rgb(200,200,200); 
+}
+
+#sendInput{
+    margin:10px;
+    fill:rgb(150,150,150);
+    position: absolute;
+    right:8px;
+    top:8px;
+    transform: scale(0.8);
+}
+
+#sendInput:hover{
+    transform: scale(0.9);
+}

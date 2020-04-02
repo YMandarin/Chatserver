@@ -9,15 +9,16 @@ var app = express();
 var server = http.createServer(app);
 var io = socketIo(server);
 
+app.use(express.static(mPath("client")))
+
 require("./routings.js")(app);
 
 io.on("connection",(socket)=>{
-    console.log(socket.id);
     socket.emit("connection");
-    require()
+    require("./handler.js")(socket);
 });
 
-server.listen(3000);
+server.listen(80);
 
 function mPath(_path){
     return path.join(process.cwd(),_path);

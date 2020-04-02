@@ -1,12 +1,115 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="source/lib/jquery-3.4.1.js"></script>
-        <script src="source/lib/socket.io.js"></script>
-        <script src="source/js/index.js"></script>
-        <script src="source/lib/ejs.js"></script>
+        <script src="/lib/jquery-3.4.1.js"></script>
+        <script src="/lib/socket.io.js"></script>
+        <script src="/js/index.js"></script>
+        <script src="/js/login.js"></script>
+        <link rel="stylesheet" href="/css/login.css" type="text/css">
+        <link rel="stylesheet" href="/css/index.css" type="text/css">
     </head>
     <body>
-        Hi
+
+        <div id="main">
+            <div id="mainGrid">
+                <div class="mainField-character">
+                    <p id="characterName">Nick</p>
+                    <div class="characterRight">
+                        <svg id="characterNewChat" width="25px" height="25px" > <path d="M19.005 3.175H4.674C3.642 3.175 3 3.789 3 4.821V21.02l3.544-3.514h12.461c1.033 0 2.064-1.06 2.064-2.093V4.821c-.001-1.032-1.032-1.646-2.064-1.646zm-4.989 9.869H7.041V11.1h6.975v1.944zm3-4H7.041V7.1h9.975v1.944z"></path></svg>
+                        <svg id="characterListOnline" width="22px" height="25px" >
+                            <path d="M 7 24 L 21 24 Q 22 16 14 16 Q 7 16 7 24"></path>
+                            <path stroke="rgb(0,150,200)" fill="rgb(0,150,200)" d="M 2 24 L 17 24 Q 17 16 9 16 Q 2 16 2 24"></path>
+                            <path d="M 1 24 L 16 24 Q 16 16 8 16 Q 1 16 1 24"></path>
+                            <circle r="6" cx="14" cy="8"/>
+                            <circle r="6" stroke="rgb(0,150,200)" fill="rgb(0,150,200)" cx="9" cy="8"/>
+                            <circle r="6" cx="8" cy="8"/>
+                        </svg>
+                        <svg id="characterMenu" width="23px" height="25px"> <path d="M12 7a2 2 0 1 0-.001-4.001A2 2 0 0 0 12 7zm0 2a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 9zm0 6a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 15z"></path></svg>                
+                    </div>
+                </div>
+                <div class="mainField-title">
+                    <p id="groupName">Groupname</p>
+                    <p id="groupDescription"> Description</p>
+                </div>
+                <div class="mainField-selection">
+                    <div class="searchField">
+                        <input type="text" placeholder="search" id="searchInput"/> 
+                    </div>
+                    <ul id="chatSelection">
+                        <li class="activeChat">
+                            <p class="chatTitle"> Nick</p>
+                            <p class="chatLastText">lorem epsum lol</p>
+                        </li>
+                        <li class="chat">
+                            <p class="chatTitle"> Nick</p>
+                            <p class="chatLastText">lorem epsum lol</p>
+                        </li>
+                        <li class="chat">
+                            <p class="chatTitle"> groupName</p>
+                            <p class="chatLastText">you: lorem epsum lol</p>
+                        </li>
+                        <li class="chat">
+                            <p class="chatTitle"> groupName</p>
+                            <p class="chatLastText">you: lorem epsum lol</p>
+                        </li>
+                        <li class="chat">
+                            <p class="chatTitle"> groupName</p>
+                            <p class="chatLastText">you: lorem epsum lol</p>
+                        </li>
+                        <li class="chat">
+                            <p class="chatTitle"> groupName</p>
+                            <p class="chatLastText">you: lorem epsum lol</p>
+                        </li>
+                        <li class="chat">
+                            <p class="chatTitle"> groupName</p>
+                            <p class="chatLastText">you: lorem epsum lol</p>
+                        </li>
+                        <li class="chat">
+                            <p class="chatTitle"> groupName</p>
+                            <p class="chatLastText">you: lorem epsum lol</p>
+                        </li>
+                        <li class="chat">
+                            <p class="chatTitle"> groupName</p>
+                            <p class="chatLastText">you: lorem epsum lol</p>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="mainField-chat">
+                    <div id="chatList">
+                        <div class="message othersMessage">Writer<p>hi, what's goin on? lol</p></div>
+                        <div class="message writerMessage"><p>nothing</p></div>
+                        <div class="message othersMessage">Alan<p>oh, must be exciting</p></div>
+                        <div class="message writerMessage"><p>be quiet</p></div>
+                        <div class="message othersMessage">Luke<p>why should I listen to you?</p></div>
+                    </div>
+                </div>
+                <div class="mainField-input">
+                    <div contenteditable id="mainInput" placeholder="send a message"></div>
+                    <svg id="sendInput" width="30px" height="25px">
+                        <path d="M 0 0 L 30 13 L 0 25 Z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div id="loginScreen">
+            <h1>Chat</h1>
+            <h2>Login</h2>
+
+            <Input id="loginInputNick" type="text" placeholder="nick"></Input>
+            <p id="loginNickErrorMessage">This nick is not taken. Create an account!</p>
+
+            <Input id="loginInputPassword" type="password" placeholder="password"></Input>
+            <p id="loginPasswordErrorMessage"> incorrect password </p>
+            <p id="loginDisclaimer">
+                IMPORTANT: the Password is not encrypted <br/> and the serverhoster is able to see your password <br/>
+                please use a password you don't use anywhere else
+            </p>
+            <div class="loginBottom">
+                <div id="loginCreateAccount">create account</div>
+                <div id="loginButton">login</div>
+            </div>
+        </div>
     </body>
 </html>

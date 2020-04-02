@@ -7,10 +7,6 @@ module.exports = function(app){
         res.sendFile(mPath("/client/html/index.html"));
     });
 
-    app.get("/source/:type/:file",(req,res)=>{
-        res.send(fs.readFileSync(mPath(`client/${req.params.type}/${req.params.file}`)));
-    });
-
 }
 
 function mPath(_path){

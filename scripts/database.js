@@ -57,12 +57,16 @@ exports.addChatText = function(writerId,otherId,text){
     chat.data[`${user1}_${user2}`].push([writerId,text]);
 }
 
-exports.addGroup = function(groupName,usersId) {
-    chat.data[groupName] = {u:usersId,t:[]};
+exports.addGroup = function(groupName,membersId,description) {
+    chat.data[groupName] = {u:usersId,d:description,t:[]};
 
     users.forEach((e)=>{
         chat.contacts[e].push({n:groupName});
     });
+}
+
+exports.addGroupMembers = function(groupName,newMembersId){
+    chat.data[groupName].u.concat(newMembersId);
 }
 
 exports.addGroupText = function(writerId,groupName,text){
