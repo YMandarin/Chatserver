@@ -1,11 +1,13 @@
 html{
     height:100%;
+    font-size: 22px;
 }
 body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     height:100%;
     margin:0;
     vertical-align: center;
+    min-height: 380px;
 }
 
 p{
@@ -27,6 +29,10 @@ svg:hover{
     transition:all 0.05s;
 }
 
+div[contenteditable]:focus{
+    outline: none;
+}
+
 #main{
     margin: auto;
     height:100%;
@@ -37,9 +43,9 @@ svg:hover{
 #mainGrid{
     display:grid;
     grid-template-columns: minmax(200px,270px) minmax(300px,1fr);
-    grid-template-rows: 50px 1fr auto;
+    grid-template-rows: 2.5em 1fr auto;
     height:100%;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 10px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 0 8px rgba(0,0,0,0.4), 0 0 20px rgba(0,0,0,0.3);
 }
 
 .mainField-character{
@@ -47,13 +53,13 @@ svg:hover{
     flex-direction: row;
     justify-content: space-between;
     background-color: rgb(0,130,150);
-    
+    border-right: 1px solid rgb(200,200,200);
     padding:0 5px;
 }
 
 .mainField-character p{
     margin: auto 10px;
-    font-size:17px;
+    font-size:0.85em;
     color: white;
 }
 
@@ -65,8 +71,38 @@ svg:hover{
     display:flex;
     flex-direction: row;
     align-items: center;
+    position: relative;
 }
 
+.hoveringMenu{
+    padding: 5px 0;
+    position: absolute;
+    background-color: white;
+    z-index: 2;
+    top:50px;
+    right:-4px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 10px 20px rgba(0,0,0,0.15);
+    width:150px;
+}
+
+.hoveringMenuButton{
+    padding:10px 20px;
+    color:rgb(80,80,80);
+    transition: all 0.2s;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+
+.hoveringMenuButton:hover{
+    background-color: rgba(0,0,0,0.05);
+    transition: all 0.1s;
+}
+
+.hoveringMenuButton:active{
+    background-color: rgba(0,0,0,0.1);
+    transition: all 0.1s;
+}
 
 .characterRight svg:hover{
     cursor:pointer;
@@ -87,21 +123,25 @@ svg:hover{
     transform: translateY(-1px) scale(0.8);
 }
 
+#characterMenu{
+    z-index:2;
+    position:relative;
+}
+
 .mainField-title{
     background-color: rgb(0,130,150);
-    border-left: 1px solid rgb(200,200,200);
     color:white;
-    cursor:pointer;
 }
 
 
 #groupName{
-    margin:7px 15px 2px 15px ;
+    margin:7px 15px 2px 15px;
+    font-size:0.85em;
 }
 
 #groupDescription{
     margin:0 15px;
-    font-size: 12px;
+    font-size: 0.6em;
 }
 
 .mainField-selection{
@@ -113,6 +153,8 @@ svg:hover{
     height:100%;
     display:flex;
     flex-direction: column;
+    min-height: 0;
+    overflow-y: auto;
 }
 
 #chatSelection{
@@ -127,13 +169,13 @@ svg:hover{
 #chatSelection p{
     -moz-user-select: none;
     -webkit-user-select: none;
+    font-size:0.8em;
 }
 
 .chat{
     border-bottom:rgb(230,230,230) 1px solid;
     padding:5px 15px;
     transition: all 0.1s;
-    
 }
 
 .chat:hover{
@@ -151,14 +193,32 @@ svg:hover{
     background-color: rgba(100,100,100,0.15);
 }
 
+.chatWithMessage{
+    border-bottom:rgb(230,230,230) 1px solid;
+    padding:5px 15px;
+    transition: all 0.1s;
+    background-color: rgb(230,255,218);
+}
+
+.chatWithMessage:hover{
+    background-color: rgb(214, 255, 195);
+    transition: all 0.1s;
+}
+
+.chatWithMessage:active{
+    background-color: rgb(203, 255, 180);
+}
+
+
+
 .chatTitle{
-    margin:5px 0;
+    margin:7px 0;
     color:rgb(50,50,50);
 }
 
 .chatLastText{
     margin:0;
-    font-size: 13px;
+    font-size: 0.65em;
     color:rgb(100,100,100);
 }
 
@@ -167,7 +227,7 @@ svg:hover{
     flex-direction: row;
     align-items: center;
     position:relative;
-    border-bottom:1px rgb(200,200,200) solid;
+    border-bottom:1px rgb(230,230,230) solid;
     background-color: rgb(250,250,250);
 }
 
@@ -181,21 +241,46 @@ svg:hover{
 }
 
 .mainField-chat{
-    background-color:rgb(250,250,250);
+    background-image: url("/pictures/chat-background.jpg");
+    background-color:rgb(240, 253, 253);
+    min-height: 0;
+    overflow-y: auto;
 }
 
 #chatList{
     display:flex;
     flex-direction: column;
-    padding: 10px 40px 
+    padding: 20px 40px;
+    box-sizing: border-box;
+}
+
+.message{
+    position: relative;
+    padding: 10px 20px;
+    margin: 5px 0;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 5px 10px rgba(0,0,0,0.15);
+    border-radius: 5px;
+    max-width: 80%;
+    box-sizing: border-box;
 }
 
 .othersMessage{
     align-self: flex-start;
     background-color: white;
-    font-size:12px;
-    font-weight: bolder;
     color:rgb(100,100,100);
+}
+
+.senderName{
+    font-size:0.6em;
+}
+
+.message p{
+    font-weight: normal;
+    font-size:0.8em;
+    margin:5px 0;
+    color:rgb(50,50,50);
+    overflow: hidden;
+    white-space: pre-line;
 }
 
 .writerMessage{
@@ -203,25 +288,12 @@ svg:hover{
     background-color: rgb(150,220,255);
 }
 
-.message{
-    padding: 10px 20px;
-    margin: 5px 0;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 5px 10px rgba(0,0,0,0.15);
-    border-radius: 5px;
-    max-width: 80%;
-    
-}
-
-.message p{
-    margin:5px 0;
-    color:rgb(50,50,50);
-    overflow: hidden;
-    white-space: pre-line;
-}
-
-.othersMessage p{
-    font-weight: normal;
-    font-size: 16px;
+.adminMessage{
+    align-self: flex-start;
+    background-color: rgb(240,240,240);
+    font-size:0.6em;
+    color:rgb(150,150,150);
+    padding:4px 20px;
 }
 
 .mainField-input{
@@ -239,7 +311,7 @@ svg:hover{
 #mainInput{
     flex-grow: 1;
     padding: 10px 45px 10px 15px;
-    font-size: 17px;
+    font-size: 0.85em;
     border: none;
     color:rgb(80,80,80);
     border-radius: 10px;
@@ -249,9 +321,9 @@ svg:hover{
     word-wrap: break-word;
 }
 
-#mainInput[placeholder]:empty:before {
+#mainInput:empty:before {
     content: attr(placeholder);
-    color: rgb(200,200,200); 
+    color: rgba(150,150,150); 
 }
 
 #sendInput{
@@ -266,3 +338,5 @@ svg:hover{
 #sendInput:hover{
     transform: scale(0.9);
 }
+
+

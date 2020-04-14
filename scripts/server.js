@@ -9,13 +9,19 @@ var app = express();
 var server = http.createServer(app);
 var io = socketIo(server);
 
-app.use(express.static(mPath("client")))
-
 require("./routings.js")(app);
+
+/*
+let test = {1:"a",2:"b",3:"c"};
+for(e of Object.entries(test)){
+    console.log(e);
+}
+console.log(1 in test);*/
 
 io.on("connection",(socket)=>{
     socket.emit("connection");
-    require("./handler.js")(socket);
+    require("./handler.js")(socket,io);
+
 });
 
 server.listen(80);

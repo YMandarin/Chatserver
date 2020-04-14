@@ -1,7 +1,10 @@
 path = require("path");
 fs = require("fs");
+express = require("express");
 
 module.exports = function(app){
+
+    app.use(express.static(mPath("client")));
 
     app.get("/",(req,res)=>{
         res.sendFile(mPath("/client/html/index.html"));
