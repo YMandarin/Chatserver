@@ -17,11 +17,10 @@
   },
   "homepage": "https://github.com/YMandarin/Chatserver#readme",
   "dependencies": {
-    "nodemon": "^2.0.2"
+	"express": "^4.17.1",
+	"socket.io": "^2.3.0"
   },
   "devDependencies": {
-    "ejs": "^3.0.2",
-    "express": "^4.17.1",
-    "socket.io": "^2.3.0"
+    "nodemon": "^2.0.2"
   }
 }
