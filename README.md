@@ -7,10 +7,11 @@ It's running on Node.js and uses Socket.io and Express.
 
 ### Setup:
 
-* you need Node.js installed
+* you need Node.js and npm installed
 * clone this repository
 * go to the directory of the repository and run `npm install`. This installs Socket.io, Express and Nodemon (a devoloping tool for starting files - not needed for production)
 * the main file is scripts/server.js. Run it with either `node scripts/server.js` or `nodemon scripts/server.js` to use nodemon.
+
 
 
 ### Disclaimer
