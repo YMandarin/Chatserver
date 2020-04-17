@@ -13,4 +13,5 @@ It's running on Node.js and uses Socket.io and Express.
 
 ### Disclaimer
 All messages are loaded into RAM. This project is meant to be used in a small scale.
+
 I am not a designer, so I based the design on Whatsapp web.
