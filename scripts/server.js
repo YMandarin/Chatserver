@@ -3,7 +3,6 @@ var path = require("path");
 var express = require("express");
 var http = require("http");
 var socketIo = require("socket.io");
-var ejs = require("ejs");
 
 var app = express();
 var server = http.createServer(app);
