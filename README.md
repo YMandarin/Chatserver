@@ -4,19 +4,19 @@ This is a simple REST-based chatserver
 
 It's running on Node.js and uses Socket.io and Express.
 
-### Setup:
+## Setup:
 
 * Install Node.js and npm. (npm usually comes with Node)
 * Clone this repository
 * Go to the directory of the repository and run `npm install`. This installs Socket.io, Express and Nodemon (a devoloping tool for restarting scripts - not needed for production)
 * The entry file is scripts/server.js. Run it with either `node scripts/server.js` or `nodemon scripts/server.js` to use nodemon.
 
-### Disclaimer
+## Disclaimer
 All messages are loaded into RAM. This project is meant to be used in a small scale.
 
 I am not a designer, so I based the design on Whatsapp web.
 
-## Security Update
+### Security Update
 
 * The chatserver now uses SSL with self-signed certificate
 * All passwords are now hashed (with npm module Bcrypt)
