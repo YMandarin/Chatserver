@@ -1,6 +1,6 @@
 # Chatserver
 
-This is a simple web-based chatserver
+This is a simple REST-based chatserver
 
 It's running on Node.js and uses Socket.io and Express.
 
@@ -15,3 +15,8 @@ It's running on Node.js and uses Socket.io and Express.
 All messages are loaded into RAM. This project is meant to be used in a small scale.
 
 I am not a designer, so I based the design on Whatsapp web.
+
+## Security Update
+
+* The chatserver now uses SSL with self-signed certificate
+* All passwords are now hashed (with npm module Bcrypt)
