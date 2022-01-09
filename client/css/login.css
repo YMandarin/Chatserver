@@ -1,102 +1,100 @@
-#loginScreen{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    background-color: white;
-    transform: translate(-50%, -50%);
-    border: 1px solid gray;
-    padding:20px;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    display:flex;
-    flex-direction: column;
+#loginScreen {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgb(196, 196, 196);
+  padding: 20px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
 }
 
-#loginScreen h1,h2{
-    text-align:center;
-    margin:0;
-}
-#loginScreen h1{
-    font-size:1em;
-    font-weight: 400;
-    color: rgb(0,130,255);
+#loginTitle {
+  margin: 3px 10px 20px 10px;
+  font-size: 1.1em;
+  font-weight: 400;
+  /*color: rgb(0,130,255);*/
 }
 
-#loginScreen h2{
-    font-size: 1.5em;
-    font-weight: normal;
-    margin-bottom: 10px;
+#loginScreen input {
+  font-size: 0.7em;
+  margin: 15px 10px 3px 10px;
+  padding: 8px 10px;
+  min-width: 300px;
+  border: 1px black solid;
+  transition: all 0.5s;
+  border-radius: 4px;
 }
 
-#loginScreen input{
-    font-size: 0.85em;
-    margin: 15px 10px 3px 10px;
-    padding:10px;
-    min-width:300px;
-    border:1px black solid;
-    transition: all 0.5s;
+#loginScreen input:focus {
+  transition: all 0.5s;
+  border-color: rgb(0, 150, 255);
 }
 
-#loginScreen input:focus{
-    transition: all 0.5s;
-    border-color:rgb(0,150,255);
+#loginScreen p {
+  margin: 0;
+  font-size: 0.5em;
+  color: red;
+  margin: 0 10px;
+  padding: 0 10px;
 }
 
-#loginScreen p{
-    margin:0;
-    font-size: 0.65em;
-    color:red;
-    margin:0 10px;
-    padding:0 10px;
+.loginBottom {
+  margin: 20px 10px 10px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
-#loginDisclaimer{
-    font-size:0.5em !important;
-    margin:20px 10px !important;
+#loginButton {
+  background-color: dodgerblue;
+  color: white;
+  font-size: 0.75em;
+  padding: 10px 15px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  border-radius: 5px;
+  transition: all 0.2s;
+}
+#loginButton:hover {
+  background-color: rgb(0, 130, 255);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+#loginButton:active {
+  background-color: rgb(0, 100, 200);
+  transition: all 0.2s;
 }
 
-.loginBottom{
-    margin-top: 10px;
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
+#loginCreateAccount {
+  background-color: inherit;
+  color: rgb(0, 100, 200);
+  font-size: 0.6em;
+  padding: 1em 1em;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  transition: all 0.2s;
+  font-weight: 600;
+  vertical-align: middle;
+  border-radius: 5px;
+  display: inline;
+}
+#loginCreateAccount:hover {
+  background-color: rgba(0, 100, 255, 0.1);
+  cursor: pointer;
+}
+#loginCreateAccount:active {
+  background-color: rgba(0, 100, 255, 0.3);
 }
 
-#loginButton{
-    background-color: dodgerblue;
-    color:white;
-    font-size:0.75em;
-    padding:7px 15px;
-    -moz-user-select: none;
-    transition: all 0.2s;
-}
-#loginButton:hover{ 
-    background-color:rgb(0,130,255);
-    cursor:pointer;
-    transition: all 0.2s;
-}
-#loginButton:active{
-    background-color:rgb(0,100,200);
-    transition: all 0.2s;
-}
-
-#loginCreateAccount{
-    background-color: inherit;
-    color:rgb(0,100,200);
-    font-size:0.5em;
-    padding:7px 15px;
-    -moz-user-select: none;
-    transition: all 0.2s;
-    font-weight: 600;
-}
-#loginCreateAccount:hover{
-    background-color: rgba(0,100,255,0.1);
-    cursor: pointer;
-}
-#loginCreateAccount:active{
-    background-color:rgba(0,100,255,0.3);
-}
-
-#loginInputPassword2{
-    margin-top:0 !important;
+#loginInputPassword2 {
+  margin-top: 0 !important;
 }

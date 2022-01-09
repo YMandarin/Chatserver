@@ -1,9 +1,7 @@
-function handleLogin(){
-    
+function handleLogin() {
 
     let nickError = $("#loginNickErrorMessage");
     let passwordError = $("#loginPasswordErrorMessage");
-
     nickError.hide();
     passwordError.hide();
 
@@ -13,23 +11,23 @@ function handleLogin(){
 
     $("#main").css("filter", "blur(4px)");
 
-    $("#loginButton").on("click",()=>{
+    $("#loginButton").on("click", () => {
         let nick = $("#loginInputNick").val();
         let password = $("#loginInputPassword").val();
 
-        if(!createAccount){
-            if(checkInput(nick,password)){
-                socket.emit("login",nick,password); 
+        if (!createAccount) {
+            if (checkInput(nick, password)) {
+                socket.emit("login", nick, password);
             }
         }
-        else{
+        else {
             let password2 = $("#loginInputPassword2").val();
 
-            if(checkInput(nick,password)){
-                if(password === password2){
-                    socket.emit("createAccount",nick,password); 
+            if (checkInput(nick, password)) {
+                if (password === password2) {
+                    socket.emit("createAccount", nick, password);
                 }
-                else{
+                else {
                     passwordError.show(100);
                     passwordError.text("passwords must be identical");
                 }
@@ -37,93 +35,93 @@ function handleLogin(){
         }
     });
 
-    $("#loginCreateAccount").on("click",()=>{
-        if(!createAccount){
+    $("#loginCreateAccount").on("click", () => {
+        if (!createAccount) {
             $("#loginInputPassword2").show();
             createAccount = true;
             $("#loginCreateAccount").text("login");
             $("#loginButton").text("create Account");
         }
-        else{
+        else {
             $("#loginInputPassword2").hide();
             createAccount = false;
             $("#loginCreateAccount").text("create Account");
             $("#loginButton").text("login");
         }
-        
+
     });
 
-    $("#loginInputNick").on("keydown",(e)=>{
-        if(e.originalEvent.key != "Enter"){
+    $("#loginInputNick").on("keydown", (e) => {
+        if (e.originalEvent.key != "Enter") {
             nickError.hide();
         }
     });
 
-    $("#loginInputPassword").on("keydown",(e)=>{
-        if(e.originalEvent.key != "Enter"){
+    $("#loginInputPassword").on("keydown", (e) => {
+        if (e.originalEvent.key != "Enter") {
             passwordError.hide();
         }
-        else{
+        else {
             $("#loginButton").trigger("click");
         }
     });
 
-    $("#loginInputPassword2").on("keydown",(e)=>{
-        if(e.originalEvent.key != "Enter"){
+    $("#loginInputPassword2").on("keydown", (e) => {
+        if (e.originalEvent.key != "Enter") {
             passwordError.hide();
         }
-        else{
+        else {
             $("#loginButton").trigger("click");
         }
     });
 
 
-    socket.on("login",(nick)=>{
+    socket.on("login", (nick) => {
         loadUser(nick);
         nickName = nick;
         $("#loginScreen").hide();
         $("#main").css("filter", "none");
     });
 
-    socket.on("loginError",(nick,password)=>{
-        if (nick){
+    socket.on("loginError", (nickWrong, passwordWrong) => {
+        if (nickWrong) {
             nickError.show(100);
-            nickError.text("This nick is not taken. Create an account!")
+            nickError.text("This username is not taken. Create an account!")
         }
-        else if (password){
+        else if (passwordWrong) {
             passwordError.show(100);
             passwordError.text("incorrect password");
         }
     });
 
-    socket.on("creationError",()=>{
+    socket.on("creationError", () => {
         nickError.show();
-        nickError.text("nick already taken");
+        nickError.text("Username already taken");
     })
 
-    function checkInput(nick,password){
+    function checkInput(nick, password) {
         let ret = true;
 
-        if (removeWhitespace(nick)==""){
+        if (removeWhitespace(nick) == "") {
             nickError.show(100);
-            nickError.text("the nick can't be empty");
+            nickError.text("Username can't be empty");
             ret = false;
         }
-        
-        if (removeWhitespace(password)==""){
+
+        if (removeWhitespace(password) == "") {
             passwordError.show(100);
-            passwordError.text("the password can't be empty");
+            passwordError.text("Password can't be empty");
             ret = false;
         }
         return ret;
     }
 }
 
-function removeWhitespace(string){
-    return string.replace(/ /g,"");
+function removeWhitespace(string) {
+    return string.replace(/ /g, "");
 }
 
-function reLogin(){
+function reLogin() {
     let nickError = $("#loginNickErrorMessage");
     let passwordError = $("#loginPasswordErrorMessage");
 

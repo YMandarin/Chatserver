@@ -1,157 +1,172 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <script src="/lib/jquery-3.4.1.js"></script>
-        <script src="/lib/socket.io.js"></script>
-        <script src="/js/index.js"></script>
-        <script src="/js/login.js"></script>
-        <script src="/js/sideBar.js"></script>
-        <link rel="stylesheet" href="/css/login.css" type="text/css">
-        <link rel="stylesheet" href="/css/index.css" type="text/css">
-        <link rel="stylesheet" href="/css/sideBar.css" type="text/css">
-    </head>
-    <body>
 
-        <div id="main">
-            <div class="sideBar">
-                <div class="sideBarTop">
-                    <p id="sideBarTitle">Title</p>
-                    <svg width="12" height="12" id="sideBarCloseButton">
-                        <path d="M 1 1 L 11 11 M 1 11 L 11 1"/>
+<head>
+    <script src="/lib/jquery-3.4.1.js"></script>
+    <script src="/lib/socket.io.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/js/login.js"></script>
+    <script src="/js/sideBar.js"></script>
+    <link rel="stylesheet" href="/css/login.css" type="text/css">
+    <link rel="stylesheet" href="/css/index.css" type="text/css">
+    <link rel="stylesheet" href="/css/sideBar.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <div id="main">
+        <div class="sideBar">
+            <div class="sideBarTop">
+                <p id="sideBarTitle">Title</p>
+                <svg width="12" height="12" id="sideBarCloseButton">
+                    <path d="M 1 1 L 11 11 M 1 11 L 11 1" />
+                </svg>
+            </div>
+            <div class="sideBarPart" id="sideBarAccount">
+                <p class="sideBarInfo">Username</p>
+                <div class="sideBarInput">
+                    <input type="text" placeholder="enter a name" id="sideBarNick">
+                </div>
+                <p class="sideBarErrorMessage" id="sideBarCheckNickError">ERROR MESSAGE</p>
+                <div class="sideBarInput" id="sideBarCheckPassword">
+                    <input type="password" placeholder="enter password" id="sideBarCheckPasswordInput">
+                    <svg class="sideBarSaveButton" id="sideBarSaveCheckPassword" width="14" height="14">
+                        <path d="M 1 7 L 6 13 L 13 1" />
                     </svg>
                 </div>
-                <div class="sideBarPart" id="sideBarAccount">
-                    <p class="sideBarInfo">NICK</p>
-                    <div class="sideBarInput">
-                        <input type="text" placeholder="enter a name" id="sideBarNick">
-                    </div>
-                    <p class="sideBarErrorMessage" id="sideBarCheckNickError">ERROR MESSAGE</p>
-                    <div class="sideBarInput" id="sideBarCheckPassword">
-                        <input type="password" placeholder="enter password" id="sideBarCheckPasswordInput">
-                        <svg class="sideBarSaveButton" id="sideBarSaveCheckPassword" width="14" height="14">
-                            <path d="M 1 7 L 6 13 L 13 1"/>
-                        </svg>
-                    </div>
-                    <p class="sideBarErrorMessage" id="sideBarCheckPasswordError">ERROR MESSAGE</p>
-                    <div class="sideBarButton" id="sideBarChangePassword">Change password</div>
-                    <div class="sideBarInput" id="sideBarPasswordOld">
-                        <input type="password" placeholder="old Password" id="sideBarOldPassword">
-                        <svg class="sideBarSaveButton" id="sideBarSaveOldPassword" width="14" height="14">
-                            <path d="M 1 7 L 6 13 L 13 1"/>
-                        </svg>
-                    </div>
-                    <div class="sideBarInput" id="sideBarPasswordNew">
-                        <input type="password" placeholder="repeat new Password" id="sideBarNewPassword">
-                        <svg class="sideBarSaveButton" id="sideBarSaveNewPassword" width="14" height="14">
-                            <path d="M 1 7 L 6 13 L 13 1"/>
-                        </svg>
-                    </div>
-                    <p class="sideBarErrorMessage" id="sideBarNewPasswordError">ERROR MESSAGE</p>
+                <p class="sideBarErrorMessage" id="sideBarCheckPasswordError">ERROR MESSAGE</p>
+                <div class="sideBarButton" id="sideBarChangePassword">Change password</div>
+                <div class="sideBarInput" id="sideBarPasswordOld">
+                    <input type="password" placeholder="old Password" id="sideBarOldPassword">
+                    <svg class="sideBarSaveButton" id="sideBarSaveOldPassword" width="14" height="14">
+                        <path d="M 1 7 L 6 13 L 13 1" />
+                    </svg>
                 </div>
+                <div class="sideBarInput" id="sideBarPasswordNew">
+                    <input type="password" placeholder="repeat new Password" id="sideBarNewPassword">
+                    <svg class="sideBarSaveButton" id="sideBarSaveNewPassword" width="14" height="14">
+                        <path d="M 1 7 L 6 13 L 13 1" />
+                    </svg>
+                </div>
+                <p class="sideBarErrorMessage" id="sideBarNewPasswordError">ERROR MESSAGE</p>
+            </div>
 
-                <div class="sideBarPart" id="sideBarChatCreation">
-                    <div class="sideBarButton" id="sideBarCreateGroupButton">create Group</div>
-                    <div class="sideBarInput" id="sideBarNewChatSearchBar">
-                        <input type="text" placeholder="search user" id="sideBarNewChatSearchInput">
-                        <svg class="sideBarSaveButton" id="sideBarNewChatSearchButton" width="14" height="14">
-                            <line x1="5" x2="14" y1="5" stroke="rgb(80,80,80)" y2="14"/>
-                            <circle cx="5" cy="5" r="4"/>
-                            <circle cx="5" cy="5" r="3" fill="white"/>
-                        </svg>
-                    </div>
-                    <div id="sideBarOnlineUserList">
-                        
-                    </div>
+            <div class="sideBarPart" id="sideBarChatCreation">
+                <div class="sideBarButton" id="sideBarCreateGroupButton">create Group</div>
+                <div class="sideBarInput" id="sideBarNewChatSearchBar">
+                    <input type="text" placeholder="search user" id="sideBarNewChatSearchInput">
+                    <svg class="sideBarSaveButton" id="sideBarNewChatSearchButton" width="14" height="14">
+                        <line x1="5" x2="14" y1="5" stroke="rgb(80,80,80)" y2="14" />
+                        <circle cx="5" cy="5" r="4" />
+                        <circle cx="5" cy="5" r="3" fill="white" />
+                    </svg>
                 </div>
-                <div class="sideBarPart" id="sideBarGroupCreation">
-                    <div class="sideBarButton" id="sideBarNewChatButton"> <svg width="18" height="13" ><path d="M7 1 L1 7 L7 12 M1 7 L 18 7" /></svg> new Chat</div>
-                    <div id="sideBarNewGroupMember">
-                        
-                    </div>
-                    <div class="sideBarInput" id="sideBarCreateGroupSearchBar">
-                        <input type="text" placeholder="search user" id="sideBarCreateGroupSearchInput">
-                        <svg class="sideBarSaveButton" id="sideBarCreateGroupSearchButton" width="14" height="14">
-                            <line x1="5" x2="14" y1="5" stroke="rgb(80,80,80)" y2="14"/>
-                            <circle cx="5" cy="5" r="4"/>
-                            <circle cx="5" cy="5" r="3" fill="white"/>
-                        </svg>
-                    </div>
-                    <div id="sideBarPossibleGroupMember">
-                        
-                    </div>
-                    <p id="sideBarMemberError" class="sideBarErrorMessage">ERROR MESSAGE</p>
-                    <div id="sideBarGroupCreationNext" class="sideBarButton">Next<svg width="18" height="13" ><path d="M0 7 L17 7 L8 12 M17 7 L8 1"/></svg></div>
-                </div>
-                <div class="sideBarPart" id="sideBarGroupCreationSecond">
-                    <div class="sideBarButton" id="sideBarGroupCreationSecondBackButton"><svg width="18" height="13" ><path d="M7 1 L1 7 L7 12 M1 7 L 18 7" /> </svg> Back</div>
-                    <p class="sideBarInfo">Name</p>
-                    <div class="sideBarInput" id="sideBarGroupName">
-                        <input type="text" placeholder="enter a name" id="sideBarGroupNameInput">
-                    </div>
-                    <p class="sideBarErrorMessage" id="sideBarGroupNameError">ERROR MESSAGE</p>
-                    <p class="sideBarInfo" id="sideBarDescriptionInfo">Description</p>
-                    <div contenteditable placeholder="enter a description" id="sideBarGroupDescription"></div>
-                    
-                    <div id="sideBarCreateGroup" class="sideBarButton">Create group<svg width="18" height="13" ><path d="M0 7 L17 7 L8 12 M17 7 L8 1"/></svg></div>
+                <div id="sideBarOnlineUserList">
+
                 </div>
             </div>
-            <div id="mainGrid">
-                <div class="mainField-character">
-                    <p id="characterName">Nick</p>
-                    <div class="characterRight">
-                        <svg id="characterNewChat" width="25px" height="25px" > <path d="M19.005 3.175H4.674C3.642 3.175 3 3.789 3 4.821V21.02l3.544-3.514h12.461c1.033 0 2.064-1.06 2.064-2.093V4.821c-.001-1.032-1.032-1.646-2.064-1.646zm-4.989 9.869H7.041V11.1h6.975v1.944zm3-4H7.041V7.1h9.975v1.944z"></path></svg>
-                        <div class="hoveringMenu">
-                            <div class="hoveringMenuButton">Profile</div>
-                            <div class="hoveringMenuButton">New chat</div>
-                            <div class="hoveringMenuButton">Log out</div>
-                        </div>
-                        <svg id="characterMenu" width="23px" height="25px"> <path d="M12 7a2 2 0 1 0-.001-4.001A2 2 0 0 0 12 7zm0 2a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 9zm0 6a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 15z"></path></svg>                
+            <div class="sideBarPart" id="sideBarGroupCreation">
+                <div class="sideBarButton" id="sideBarNewChatButton"> <svg width="18" height="13">
+                        <path d="M7 1 L1 7 L7 12 M1 7 L 18 7" />
+                    </svg> new Chat</div>
+                <div id="sideBarNewGroupMember">
+
+                </div>
+                <div class="sideBarInput" id="sideBarCreateGroupSearchBar">
+                    <input type="text" placeholder="search user" id="sideBarCreateGroupSearchInput">
+                    <svg class="sideBarSaveButton" id="sideBarCreateGroupSearchButton" width="14" height="14">
+                        <line x1="5" x2="14" y1="5" stroke="rgb(80,80,80)" y2="14" />
+                        <circle cx="5" cy="5" r="4" />
+                        <circle cx="5" cy="5" r="3" fill="white" />
+                    </svg>
+                </div>
+                <div id="sideBarPossibleGroupMember">
+
+                </div>
+                <p id="sideBarMemberError" class="sideBarErrorMessage">ERROR MESSAGE</p>
+                <div id="sideBarGroupCreationNext" class="sideBarButton">Next<svg width="18" height="13">
+                        <path d="M0 7 L17 7 L8 12 M17 7 L8 1" />
+                    </svg></div>
+            </div>
+            <div class="sideBarPart" id="sideBarGroupCreationSecond">
+                <div class="sideBarButton" id="sideBarGroupCreationSecondBackButton"><svg width="18" height="13">
+                        <path d="M7 1 L1 7 L7 12 M1 7 L 18 7" />
+                    </svg> Back</div>
+                <p class="sideBarInfo">Name</p>
+                <div class="sideBarInput" id="sideBarGroupName">
+                    <input type="text" placeholder="enter a name" id="sideBarGroupNameInput">
+                </div>
+                <p class="sideBarErrorMessage" id="sideBarGroupNameError">ERROR MESSAGE</p>
+                <p class="sideBarInfo" id="sideBarDescriptionInfo">Description</p>
+                <div contenteditable placeholder="enter a description" id="sideBarGroupDescription"></div>
+
+                <div id="sideBarCreateGroup" class="sideBarButton">Create group<svg width="18" height="13">
+                        <path d="M0 7 L17 7 L8 12 M17 7 L8 1" />
+                    </svg></div>
+            </div>
+        </div>
+        <div id="mainGrid">
+            <div class="mainField-character">
+                <p id="characterName">Username</p>
+                <div class="characterRight">
+                    <svg id="characterNewChat" width="25px" height="25px">
+                        <path
+                            d="M19.005 3.175H4.674C3.642 3.175 3 3.789 3 4.821V21.02l3.544-3.514h12.461c1.033 0 2.064-1.06 2.064-2.093V4.821c-.001-1.032-1.032-1.646-2.064-1.646zm-4.989 9.869H7.041V11.1h6.975v1.944zm3-4H7.041V7.1h9.975v1.944z">
+                        </path>
+                    </svg>
+                    <div class="hoveringMenu">
+                        <div class="hoveringMenuButton">Profile</div>
+                        <div class="hoveringMenuButton">New chat</div>
+                        <div class="hoveringMenuButton">Log out</div>
                     </div>
-                </div>
-                <div class="mainField-title">
-                    <p id="groupName"></p>
-                    <p id="groupDescription"></p>
-                </div>
-                <div class="mainField-selection">
-                    <div class="searchField">
-                        <input type="text" placeholder="search" id="searchInput"/> 
-                    </div>
-                    <ul id="chatSelection">
-                    </ul>
-                </div>
-                <div class="mainField-chat">
-                    <div id="chatList">
-                    </div>
-                </div>
-                <div class="mainField-input">
-                    <div contenteditable id="mainInput" placeholder="send a message"></div>
-                    <svg id="sendInput" width="30px" height="25px">
-                        <path d="M 0 0 L 30 13 L 0 25 Z"/>
+                    <svg id="characterMenu" width="23px" height="25px">
+                        <path
+                            d="M12 7a2 2 0 1 0-.001-4.001A2 2 0 0 0 12 7zm0 2a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 9zm0 6a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 15z">
+                        </path>
                     </svg>
                 </div>
             </div>
-        </div>
-
-        <div id="loginScreen">
-            <h1>Chat</h1>
-            <h2>Login</h2>
-
-            <Input id="loginInputNick" type="text" placeholder="nick"></Input>
-            <p id="loginNickErrorMessage"></p>
-
-            <Input id="loginInputPassword" type="password" placeholder="password"></Input>
-            <Input id="loginInputPassword2" type="password" placeholder="repeat password"></Input>
-            <p id="loginPasswordErrorMessage"></p>
-            <p id="loginDisclaimer">
-                IMPORTANT: Your password is not encrypted <br/> and the serverhoster is able to see your password. <br/>
-                Please use a password you don't use anywhere else.
-            </p>
-            <div class="loginBottom">
-                <div id="loginCreateAccount">create account</div>
-                <div id="loginButton">login</div>
+            <div class="mainField-title">
+                <p id="groupName"></p>
+                <p id="groupDescription"></p>
+            </div>
+            <div class="mainField-selection">
+                <div class="searchField">
+                    <input type="text" placeholder="search" id="searchInput" />
+                </div>
+                <ul id="chatSelection">
+                </ul>
+            </div>
+            <div class="mainField-chat">
+                <div id="chatList">
+                </div>
+            </div>
+            <div class="mainField-input">
+                <div contenteditable id="mainInput" placeholder="send a message"></div>
+                <svg id="sendInput" width="30px" height="25px">
+                    <path d="M 0 0 L 30 13 L 0 25 Z" />
+                </svg>
             </div>
         </div>
+    </div>
 
-        <script> documentLoad();</script>
-    </body>
+    <div id="loginScreen">
+        <h2 id="loginTitle">Login</h2>
+
+        <Input id="loginInputNick" type="email" placeholder="Username"></Input>
+        <p id="loginNickErrorMessage"></p>
+
+        <Input id="loginInputPassword" type="password" placeholder="Password"></Input>
+        <Input id="loginInputPassword2" type="password" placeholder="Repeat Password"></Input>
+        <p id="loginPasswordErrorMessage"></p>
+        <div class="loginBottom">
+            <div id="loginCreateAccount">create account</div>
+            <div id="loginButton">login</div>
+        </div>
+    </div>
+
+    <script> documentLoad(); document.getElementById("loginInputNick").focus();</script>
+</body>
+
 </html>

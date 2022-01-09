@@ -305,23 +305,23 @@ function handleSideBar(){
         }
         else{
             if(!nick){
-                sideBarShowError("#sideBarCheckNickError","nick taken");
+                sideBarShowError("#sideBarCheckNickError","Username taken!");
             }
             if(!password){
-                sideBarShowError("#sideBarCheckPasswordError","password wrong");
+                sideBarShowError("#sideBarCheckPasswordError","Wrong password!");
             }
         }
     });
 
     socket.on("changePasswordCheck",ok=>{
         if(ok){
-            $("#sideBarOldPassword").attr("placeholder","insert new password");
+            $("#sideBarOldPassword").attr("placeholder","Insert new password!");
             $("#sideBarOldPassword").val("");
             $("#sideBarSaveOldPassword").hide();
             $("#sideBarPasswordNew").show(100);
         }
         else{
-            sideBarShowError("#sideBarNewPasswordError","password wrong");
+            sideBarShowError("#sideBarNewPasswordError","Wrong password!");
         }
     });
 
